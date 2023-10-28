@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImportarRespostas;
-
-
-use App\Http\Controllers\Queue;
+use App\Http\Controllers\QueuePost;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +14,5 @@ use App\Http\Controllers\Queue;
 |
 */
 
-
-Route::get('/importarRes/{edital}', [ImportarRespostas::class, 'importacao'])->name('importarRes.importacao');
-
-
-
-
-Route::post('/importarRes', [ImportarRespostas::class, 'importacaoAAAAA'])->name('importarRes.importacaoAAAAA');
-
-
-// Route::post('/queue/run_report', [ImportarRespostas::class, 'importacaoAAAAA'])->name('importarRes.importacaoAAAAA');
-
-
-// Route::any('/queue/run_report', [Queue::class, 'runServerReport'])->name('Queue.runServerReport');
+Route::get('QueuePost/index/{edital}', [QueuePost::class, 'index'])->name('QueuePost.index');
+Route::post('QueuePost/cadastro', [QueuePost::class, 'cadastro'])->name('QueuePost.cadastro');

@@ -8,23 +8,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Jobs;
+use App\Models\TesteModel;
 
 
 
-class Imp implements ShouldQueue
+class Teste implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
-
-    // passar variavel
-    public $edital;
-
-    public $msg;
-
-
-
+    // Parâmetro
+    public $titulo;
+    public $mensagem;
 
     /**
      * Create a new job instance.
@@ -35,12 +29,8 @@ class Imp implements ShouldQueue
     public function __construct($data)
     {
 
-        $this->edital = $data['edital'];
-        $this->msg = $data['text'];
-
-
-
-        //
+        $this->titulo = $data['titulo'];
+        $this->mensagem = $data['mensagem'];
     }
 
     /**
@@ -51,9 +41,8 @@ class Imp implements ShouldQueue
     public function handle()
     {
 
-        $data['edital'] = $this->edital;
-        $data['text'] = $this->msg;
-        Jobs::create($data);
-        
+        $data['titulo'] = $this->titulo;
+        $data['mensagem'] = $this->mensagem;
+        TesteModel::create($data);
     }
 }
