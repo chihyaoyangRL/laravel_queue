@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Aaa extends Migration
+class Teste extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class Aaa extends Migration
      */
     public function up()
     {
-        Schema::create('aaa', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
-            $table->longText('text');
-            $table->unsignedInteger('edital');
+        Schema::create('teste', function (Blueprint $table) {
+            $table->id();
+            $table->text('titulo');
+            $table->text('mensagem');
         });
     }
 
@@ -28,6 +27,6 @@ class Aaa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('teste');
     }
 }
